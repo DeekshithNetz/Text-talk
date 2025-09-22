@@ -8,7 +8,13 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)  # <- allow cross-origin requests with cookies/session
-socketio = SocketIO(app, cors_allowed_origins="http://localhost:8080")
+
+socketio = SocketIO(app, cors_allowed_origins=[
+    "http://localhost:8080",
+    "https://text-talk-alpha.vercel.app",
+   # Replace with your actual backend URL
+ # Example IP, if you're using IP directly
+])
 
 app.config['SECRET_KEY'] = 'mysecret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///chat.db'
@@ -134,4 +140,4 @@ def handle_private_message(data):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    socketio.run(app, debug=True)
+    socketio.run(app, host="0.0.0.0", port=5000)
