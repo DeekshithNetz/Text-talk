@@ -1,7 +1,7 @@
 Flask==2.2.5
 Flask-SocketIO==5.3.3
 Flask-Login==0.6.2
-SQLAlchemy==2.0.20
+Flask-SQLAlchemy==3.0.5
 Flask-CORS==6.0.0
-gunicorn==21.2.0
 eventlet==0.33.2
+gunicorn==21.2.0
